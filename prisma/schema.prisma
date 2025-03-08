@@ -1,0 +1,35 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mysql"
+    url = env("DATABASE_URL")
+}
+
+
+model User {
+    id Int @id @default(autoincrement())
+    username String
+    email String
+    password String
+}
+
+enum Status {
+    diproses
+    selesai
+    arsip
+}
+
+model Surat {
+    id Int @id @default(autoincrement())
+    jenis_surat String
+    nomor_surat String
+    tgl_surat DateTime
+    tgl_dikirim DateTime
+    pengirim String
+    penerima String
+    perihal String
+    lampiran String
+    status Status @default(diproses)
+}

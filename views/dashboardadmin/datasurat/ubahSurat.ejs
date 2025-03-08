@@ -1,0 +1,113 @@
+<div class="card">
+    <div class="card-header">
+      <div class="card-title">Form Ubah surat</div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <form action="/admin/ubahSurat/<%= surat.id %>?_method=PUT" method="post" enctype="multipart/form-data">
+            <div class="col-md-6 col-lg-4">
+                <div class="form-group">
+                  <label for="jenis_surat">Jenis Surat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="jenis_surat"
+                    name="jenis_surat"
+                    placeholder="Masukan Jenis Surat"
+                    autofocus value="<%= surat.jenis_surat %>"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="nomor_surat">Nomor Surat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nomor_surat"
+                    placeholder="Masukan nomor surat"
+                    name="nomor_surat"
+                    autofocus value="<%= surat.nomor_surat %>"
+                  />
+                </div>
+                <div class="form-group">
+                    <label for="tgl_surat">Tanggal Surat</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="tgl_surat"
+                      placeholder="Masukan tanggal surat"
+                      name="tgl_surat"
+                      value="<%= surat.tgl_surat ? surat.tgl_surat.toISOString().split('T')[0] : '' %>"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="tgl_dikirim">Tanggal Dikirim</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="tgl_dikirim"
+                      placeholder="Masukan tanggal surat yang dikirim"
+                      name="tgl_dikirim"
+                      value="<%= surat.tgl_dikirim ? surat.tgl_dikirim.toISOString().split('T')[0] : '' %>"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="pengirim">Pengirim Surat</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="pengirim"
+                      placeholder="Masukan pengirim surat"
+                      name="pengirim"
+                      autofocus value="<%= surat.pengirim %>"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="penerima">Penerima Surat</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="penerima"
+                      placeholder="Masukan penerima surat"
+                      name="penerima"
+                      autofocus value="<%= surat.penerima %>"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="password">Perihal Surat</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="perihal"
+                      placeholder="Masukan perihal surat"
+                      name="perihal"
+                      autofocus value="<%= surat.perihal %>"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="lampiran">Lampiran Surat</label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="lampiran"
+                      placeholder="Masukan lampiran"
+                      name="lampiran"
+                    />
+                    <% if (surat.lampiran) { %>
+                        <p>Lampiran saat ini: <a href="/uploads/<%= surat.lampiran %>" target="_blank"><%= surat.lampiran %></a></p>
+                    <% } %>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status Surat</label>
+                    <select class="form-select" id="status" name="status">
+                        <option value="diproses" <%= surat.status === 'diproses' ? 'selected' : '' %>>Diproses</option>
+                        <option value="selesai" <%= surat.status === 'selesai' ? 'selected' : '' %>>Selesai</option>
+                        <option value="arsip" <%= surat.status === 'arsip' ? 'selected' : '' %>>Arsip</option>
+                    </select>                    
+                </div>
+                <button class="btn btn-success">Ubah!</button>
+                <a href="/admin/datasurat" class="btn btn-danger">Kembali</a>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>

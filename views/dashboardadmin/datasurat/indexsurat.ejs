@@ -1,0 +1,71 @@
+<div class="card">
+    <div class="card-header">
+      <div class="card-title">Data Surat</div>
+      <a href="/admin/datasurat/viewtambahsurat" class="btn btn-primary">Tambah Surat</a>
+    </div>
+    <% if (msg.length > 0) { %>
+      <div class="alert alert-success" role="alert"><%= msg; %></div>
+    <% } %>
+    <div class="card-body">
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th scope="col">Jenis Surat</th>
+            <th scope="col">Nomor Surat</th>
+            <th scope="col">Tanggal Surat</th>
+            <th scope="col">Tanggal dikirim</th>
+            <th scope="col">Pengirim</th>
+            <th scope="col">Penerima</th>
+            <th scope="col">Perihal</th>
+            <th scope="col">Status</th>
+            <th scope="col">Lampiran</th>
+            <th scope="col">Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% surat.forEach(data => { %>
+            <tr>
+              <td><%= data.jenis_surat %></td>
+              <td><%= data.nomor_surat %></td>
+              <td><%= data.tgl_surat %></td>
+              <td><%= data.tgl_dikirim %></td>
+              <td><%= data.pengirim %></td>
+              <td><%= data.penerima %></td>
+              <td><%= data.perihal %></td>
+              <td><%= data.status %></td>
+              <td>
+                <% if (data.lampiran) { %>
+                  <a href="/download/<%= data.lampiran %>" class="btn btn-success badge">
+                    Download
+                  </a>
+                <% } else { %>
+                  Tidak ada lampiran
+                <% } %>
+              </td>
+              <td>
+                <a
+                  href="/admin/viewdatasurat/edit/<%= data.id %>"
+                  class="btn btn-info badge"
+                  >Ubah</a
+                >
+                <form
+                  action="/admin/datasurat/<%= data.id %>?_method=DELETE"
+                  method="POST"
+                  class="d-inline"
+                >
+                  <input type="hidden" name="id" value="<%= data.id %>" />
+                  <button
+                    type="submit"
+                    class="btn btn-danger badge"
+                    onclick="return confirm('Yakin mau hapus data ini?')"
+                  >
+                    hapus
+                  </button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>

@@ -1,0 +1,103 @@
+<div class="card">
+    <div class="card-header">
+      <div class="card-title">Form tambah surat</div>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <form action="/admin/tambahSurat" method="post" enctype="multipart/form-data">
+            <div class="col-md-6 col-lg-4">
+                <div class="form-group">
+                  <label for="jenis_surat">Jenis Surat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="jenis_surat"
+                    name="jenis_surat"
+                    placeholder="Masukan Jenis Surat"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="nomor_surat">Nomor Surat</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nomor_surat"
+                    placeholder="Masukan nomor surat"
+                    name="nomor_surat"
+                  />
+                </div>
+                <div class="form-group">
+                    <label for="tgl_surat">Tanggal Surat</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="tgl_surat"
+                      placeholder="Masukan tanggal surat"
+                      name="tgl_surat"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="tgl_dikirim">Tanggal Dikirim</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="tgl_dikirim"
+                      placeholder="Masukan tanggal surat yang dikirim"
+                      name="tgl_dikirim"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="pengirim">Pengirim Surat</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="pengirim"
+                      placeholder="Masukan pengirim surat"
+                      name="pengirim"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="penerima">Penerima Surat</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="penerima"
+                      placeholder="Masukan penerima surat"
+                      name="penerima"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="password">Perihal Surat</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="perihal"
+                      placeholder="Masukan perihal surat"
+                      name="perihal"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="lampiran">Lampiran Surat</label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="lampiran"
+                      placeholder="Masukan lampiran"
+                      name="lampiran"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="status">Status Surat</label>
+                    <select class="form-select" aria-label="Status Surat" id="status" name="status">
+                        <option value="diproses">Diproses</option>
+                        <option value="selesai">Selesai</option>
+                        <option value="arsip">Arsip</option>
+                      </select>
+                </div>
+                <button class="btn btn-success">Tambah!</button>
+                <a href="/admin/datasurat" class="btn btn-danger">Kembali</a>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
