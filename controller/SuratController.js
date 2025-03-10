@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const path = require("path");
 
 exports.indexsurat = async (req, res) => {
     try {
@@ -130,4 +131,14 @@ exports.deleteSurat = async(req, res) => {
         res.status(404).send("Error! Could not delete the data!");
         console.error("Error: ", error);
     }
+}
+
+// download file atau lampiran surat
+exports.downloadFile = (req, res) => {
+    const filePath = path.join(__dirname, "../public/document", req.params.filename);
+    res.download(filePath, (err) => {
+        if (err) {
+            res.status(500).send("Error downloading file!");
+        }
+    });
 }

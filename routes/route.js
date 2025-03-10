@@ -1,9 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const path = require("path");
 const upload = require("../config/upload");
 const {index} = require("../controller/AdminController");
-const {indexsurat, createSurat, storeSurat, editSurat, updateSurat, deleteSurat} = require("../controller/SuratController");
+const {indexsurat, createSurat, storeSurat, editSurat, updateSurat, deleteSurat, downloadFile} = require("../controller/SuratController");
 
 router.get("/", (req, res) => {
     res.redirect('/admin/dashboard');
@@ -30,13 +29,6 @@ router.put("/admin/ubahSurat/:id", upload.single("lampiran"), updateSurat);
 router.delete("/admin/datasurat/:id", deleteSurat);
 
 // download file
-router.get("/download/:filename", (req, res) => {
-    const filePath = path.join(__dirname, "../public/document", req.params.filename);
-    res.download(filePath, (err) => {
-        if (err) {
-            res.status(500).send("Error downloading file!");
-        }
-    });
-});
+router.get("/download/:filename", downloadFile);
 
 module.exports = router;
